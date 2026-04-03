@@ -7,7 +7,7 @@ export default function Game( { increaseScore, resetScore } ) {
 
   useEffect(() => {
     const pokeId = [];
-    while (pokeId.length < 12) {
+    while (pokeId.length < 20) {
       const newPokeId = getRandomInt(1, 151);
       
       if (!pokeId.includes(newPokeId)) {
