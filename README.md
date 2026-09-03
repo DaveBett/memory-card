@@ -1,16 +1,62 @@
-# React + Vite
+### Memory Card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://dave-bett-memory-card.netlify.app/)
+[![Language: JavaScript](https://img.shields.io/badge/Language-JavaScript%20(ES6+)-yellow.svg)](#tech-stack--tools)
+[![Library: React](https://img.shields.io/badge/Library-React-61DAFB.svg)](#tech-stack--tools)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gray.svg)](LICENSE)
 
-Currently, two official plugins are available:
+**Memory Card** is an interactive memory game built to fulfill the React curriculum requirements of [The Odin Project](https://www.theodinproject.com/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application challenges players to click on unique Pokémon cards without selecting the same card twice. After each selection, the entire grid shuffles unpredictably, testing short-term memory while tracking the current streak and high score.
 
-## React Compiler
+**Live Application:** [dave-bett-memory-card.netlify.app](https://dave-bett-memory-card.netlify.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+```text
+# Game Loop:
+[Display Shuffled Grid of Cards]
+  │
+  ├──> Player Clicks Card
+  │      ↓
+  ├──> Check if Card ID is in `clickedCards` Array:
+  │      ├── YES: Game Over ──> Check High Score ──> Reset Current Streak
+  │      └── NO:  Increment Score ──> Append Card ID ──> Re-shuffle Grid
+  │
+  └──> Render Updated Scoreboard & Shuffled Layout
+```
+### Technical Objectives
+* **State Tracking & Lifecycle:** Managed core game loops (current score, all-time high score, and clicked card tracking) leveraging React functional components and hooks (useState, useEffect).
+* **Randomization Algorithms:** Implemented algorithmic array shuffling (e.g., Fisher-Yates shuffle) triggered on state changes to prevent predictable card positions.
+* **Component Architecture:** Separated presentational UI units (Card, Scoreboard, Header) from the main state-holding game engine.
+* **Asynchronous Asset Handling:** Loaded and rendered Pokémon sprites smoothly with dynamic image binding and fallback layout structures.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Tech Stack & Tools
+* **Core:** JavaScript (ES6+), React
+* **Styling:** CSS3 / Modern Flexbox & Grid
+* **Build Tool:** Vite / npm
+* **Deployment:** Netlify
+* **Version Control:** Git, GitHub
+
+### Architecture & Implementation Notes
+* **Unbiased Shuffling:** Used an in-place shuffle algorithm on every card click to guarantee unbiased random permutations rather than relying on pseudo-random CSS reordering.
+* **High Score Persistence:** Maintained high score calculations against current streaks to update records instantly when the previous top score is surpassed.
+
+### Running Locally
+# 1. Clone the repository
+```bash
+git clone [https://github.com/DaveBett/memory-card.git](https://github.com/DaveBett/memory-card.git)
+cd memory-card
+```
+# 2. Installing dependencies
+```bash
+npm install
+```
+# 3. Start development server
+```bash
+npm run dev
+```
+
+### Acknowledgments
+
+Built following the open-source curriculum at [The Odin Project.](https://www.theodinproject.com/lessons/react-new-memory-card)
